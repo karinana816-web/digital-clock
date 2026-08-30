@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="La Tavola - Premium Restaurant Demo Website">
+
+<title>La Tavola | Premium Restaurant</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --gold:#e7b84b;
+    --black:#0b0b0b;
+    --card:#181818;
+    --white:#ffffff;
+    --gray:#aaaaaa;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:var(--black);
+    color:var(--white);
+    line-height:1.6;
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(0,0,0,.9);
+    backdrop-filter:blur(10px);
+}
+
+.navbar{
+    max-width:1150px;
+    margin:auto;
+    padding:17px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:var(--gold);
+    font-size:27px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:22px;
+    font-size:15px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+.menu-icon{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 20px 60px;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.6),
+        rgba(0,0,0,.85)
+    ),
+    url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80")
+    center/cover;
+}
+
+.hero-content{
+    max-width:750px;
+    animation:show 1s ease;
+}
+
+.hero small{
+    color:var(--gold);
+    letter-spacing:3px;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:clamp(45px,9vw,85px);
+    margin:15px 0;
+}
+
+.hero p{
+    color:#ddd;
+    font-size:18px;
+}
+
+.btn{
+    display:inline-block;
+    margin:20px 5px 0;
+    padding:13px 27px;
+    border-radius:30px;
+    background:var(--gold);
+    color:#111;
+    text-decoration:none;
+    font-weight:bold;
+    border:none;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    background:white;
+}
+
+.outline{
+    background:transparent;
+    color:white;
+    border:1px solid var(--gold);
+}
+
+
+/* GENERAL */
+
+section{
+    padding:85px 20px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.title h2{
+    font-size:40px;
+    color:var(--gold);
+}
+
+.title p{
+    color:var(--gray);
+}
+
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:45px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:20px;
+}
+
+.about h2{
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.about p{
+    color:var(--gray);
+}
+
+
+/* MENU */
+
+.filters{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.filters button{
+    padding:10px 20px;
+    margin:5px;
+    border-radius:25px;
+    border:1px solid var(--gold);
+    background:transparent;
+    color:white;
+    cursor:pointer;
+}
+
+.filters button:hover{
+    background:var(--gold);
+    color:#111;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:23px;
+}
+
+.food{
+    background:var(--card);
+    border-radius:17px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.food:hover{
+    transform:translateY(-7px);
+}
+
+.food img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+}
+
+.food-content{
+    padding:20px;
+}
+
+.food h3{
+    color:var(--gold);
+}
+
+.food p{
+    color:var(--gray);
+    font-size:14px;
+}
+
+.price{
+    display:block;
+    margin-top:10px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.04);
+}
+
+
+/* REVIEWS */
+
+.reviews{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.review{
+    background:var(--card);
+    padding:25px;
+    border-radius:17px;
+}
+
+.stars{
+    color:var(--gold);
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.review p{
+    color:var(--gray);
+}
+
+
+/* BOOKING */
+
+.booking{
+    max-width:650px;
+    margin:auto;
+    background:var(--card);
+    padding:30px;
+    border-radius:20px;
+}
+
+.booking input,
+.booking select,
+.booking textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:10px;
+    background:#292929;
+    color:white;
+    outline:none;
+}
+
+.booking textarea{
+    resize:none;
+}
+
+.booking input:focus,
+.booking select:focus,
+.booking textarea:focus{
+    outline:2px solid var(--gold);
+}
+
+.booking .btn{
+    width:100%;
+}
+
+
+/* CONTACT */
+
+.contact{
+    background:var(--card);
+    max-width:750px;
+    margin:auto;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.contact p{
+    margin:10px;
+    color:var(--gray);
+}
+
+
+/* WHATSAPP */
+
+.whatsapp{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#25d366;
+    color:white;
+    text-decoration:none;
+    font-size:25px;
+    z-index:999;
+}
+
+
+/* FOOTER */
+
+footer{
+    background:#050505;
+    text-align:center;
+    padding:30px 20px;
+    color:#888;
+}
+
+.creator{
+    color:var(--gold);
+    margin-top:7px;
+}
+
+
+/* ANIMATION */
+
+@keyframes show{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    nav{
+        display:none;
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:#111;
+        flex-direction:column;
+        padding:20px;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    nav a{
+        margin:12px 0;
+    }
+
+    .menu-icon{
+        display:block;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .menu{
+        grid-template-columns:1fr;
+    }
+
+    .reviews{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+La Tavola
+</div>
+
+<div class="menu-icon" onclick="openMenu()">
+☰
+</div>
+
+<nav id="nav">
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#menu">Menu</a>
+<a href="#gallery">Gallery</a>
+<a href="#booking">Booking</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<small>WELCOME TO LA TAVOLA</small>
+
+<h1>
+Good Food.<br>
+Great Moments.
+</h1>
+
+<p>
+Fresh ingredients, delicious flavours and a beautiful
+atmosphere for unforgettable moments.
+</p>
+
+<a href="#menu" class="btn">
+Explore Menu
+</a>
+
+<a href="#booking" class="btn outline">
+Book a Table
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
+Our Story
+</h2>
+
+<p>
+Passion behind every plate
+</p>
+
+</div>
+
+
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80">
+
+
+<div>
+
+<h2>
+Made With Passion ❤️
+</h2>
+
+<p>
+At La Tavola, every dish is prepared with fresh
+ingredients, creative recipes and genuine passion.
+</p>
+
+<br>
+
+<p>
+Whether you are joining us for lunch, dinner or a
+special celebration, our goal is to make your
+experience memorable.
+</p>
+
+<a href="#booking" class="btn">
+Reserve Table
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MENU -->
+
+<section id="menu">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
+Our Menu
+</h2>
+
+<p>
+Delicious food for every mood
+</p>
+
+</div>
+
+
+<div class="filters">
+
+<button onclick="filterFood('all')">
+All
+</button>
+
+<button onclick="filterFood('pizza')">
+Pizza
+</button>
+
+<button onclick="filterFood('burger')">
+Burger
+</button>
+
+<button onclick="filterFood('dessert')">
+Dessert
+</button>
+
+</div>
+
+
+<div class="menu">
+
+
+<div class="food pizza">
+
+<img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-content">
+
+<h3>
+Classic Pizza
+</h3>
+
+<p>
+Fresh vegetables, cheese and special sauce.
+</p>
+
+<span class="price">
+₹299
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="food pizza">
+
+<img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-content">
+
+<h3>
+Cheese Pizza
+</h3>
+
+<p>
+Extra cheese with our special Italian sauce.
+</p>
+
+<span class="price">
+₹349
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="food burger">
+
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-content">
+
+<h3>
+Premium Burger
+</h3>
+
+<p>
+Juicy burger with fresh vegetables and cheese.
+</p>
+
+<span class="price">
+₹249
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="food burger">
+
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-content">
+
+<h3>
+Classic Burger
+</h3>
+
+<p>
+Crispy vegetables with our special burger sauce.
+</p>
+
+<span class="price">
+₹199
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="food dessert">
+
+<img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-content">
+
+<h3>
+Chocolate Cake
+</h3>
+
+<p>
+Rich and creamy chocolate dessert.
+</p>
+
+<span class="price">
+₹179
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="food dessert">
+
+<img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-content">
+
+<h3>
+Sweet Dessert
+</h3>
+
+<p>
+A delicious dessert to finish your meal.
+</p>
+
+<span class="price">
+₹159
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
+Food Gallery
+</h2>
+
+<p>
+A glimpse of our delicious food
+</p>
+
+</div>
+
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=80">
+
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80">
+
+<img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80">
+
+<img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80">
+
+<img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80">
+
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80">
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- REVIEWS -->
+
+<section>
+
+<div class="container">
+
+<div class="title">
+
+<h2>
+Customer Reviews
+</h2>
+
+<p>
+What our guests say
+</p>
+
+</div>
+
+
+<div class="reviews">
+
+
+<div class="review">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+Amazing food and beautiful atmosphere.
+Highly recommended!
+</p>
+
+<br>
+
+<strong>
+— Rahul
+</strong>
+
+</div>
+
+
+
+<div class="review">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+Excellent service and delicious food.
+A wonderful experience.
+</p>
+
+<br>
+
+<strong>
+— Priya
+</strong>
+
+</div>
+
+
+
+<div class="review">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+Perfect place for dinner with family
+and friends.
+</p>
+
+<br>
+
+<strong>
+— Aman
+</strong>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BOOKING -->
+
+<section id="booking">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
+Book a Table
+</h2>
+
+<p>
+Reserve your table
+</p>
+
+</div>
+
+
+<div class="booking">
+
+<input
+type="text"
+id="name"
+placeholder="Your Name"
+>
+
+<input
+type="tel"
+id="phone"
+placeholder="Phone Number"
+>
+
+<input
+type="date"
+id="date"
+>
+
+<select id="people">
+
+<option value="">
+Number of Guests
+</option>
+
+<option>
+1 Guest
+</option>
+
+<option>
+2 Guests
+</option>
+
+<option>
+3 Guests
+</option>
+
+<option>
+4 Guests
+</option>
+
+<option>
+5+ Guests
+</option>
+
+</select>
+
+
+<textarea
+id="message"
+rows="4"
+placeholder="Special Request (Optional)"
+></textarea>
+
+
+<button
+class="btn"
+onclick="booking()"
+>
+Request Booking
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
+Contact Us
+</h2>
+
+<p>
+Demo contact information
+</p>
+
+</div>
+
+
+<div class="contact">
+
+<p>
+📍 Main Market, Your City, India
+</p>
+
+<p>
+📞 Demo Contact Number
+</p>
+
+<p>
+✉️ Demo Email
+</p>
+
+<p>
+🕐 Monday - Sunday: 11:00 AM - 11:00 PM
+</p>
+
+<a href="#booking" class="btn">
+Send Enquiry
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WHATSAPP DEMO -->
+
+<a
+href="#contact"
+class="whatsapp"
+title="Demo WhatsApp"
+>
+💬
+</a>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 La Tavola — Demo Portfolio Website
+</p>
+
+<p class="creator">
+Designed & Developed by Karina 💻✨
+</p>
+
+</footer>
+
+
+<script>
+
+
+/* MOBILE MENU */
+
+function openMenu(){
+
+    document
+    .getElementById("nav")
+    .classList
+    .toggle("active");
+
+}
+
+
+/* MENU FILTER */
+
+function filterFood(category){
+
+    const foods =
+    document.querySelectorAll(".food");
+
+    foods.forEach(function(food){
+
+        if(category === "all"){
+
+            food.style.display = "block";
+
+        }
+
+        else if(
+            food.classList.contains(category)
+        ){
+
+            food.style.display = "block";
+
+        }
+
+        else{
+
+            food.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* BOOKING */
+
+function booking(){
+
+    const name =
+    document.getElementById("name").value;
+
+    const phone =
+    document.getElementById("phone").value;
+
+    const date =
+    document.getElementById("date").value;
+
+    const people =
+    document.getElementById("people").value;
+
+
+    if(
+        name === "" ||
+        phone === "" ||
+        date === "" ||
+        people === ""
+    ){
+
+        alert(
+        "Please fill all required details."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+    "Thank you " +
+    name +
+    "! Your demo booking request has been received."
+    );
+
+}
+
+</script>
+
+</body>
+</html>
